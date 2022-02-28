@@ -1,0 +1,62 @@
+<link rel="preload" as="image" href='png_seq/plexi_00000.png'>
+<link rel="preload" as="image" href='png_seq/plexi_00001.png'>
+<link rel="preload" as="image" href='png_seq/plexi_00002.png'>
+<link rel="preload" as="image" href='png_seq/plexi_00003.png'>
+<link rel="preload" as="image" href='png_seq/plexi_00004.png'>
+<link rel="preload" as="image" href='png_seq/plexi_00005.png'>
+<link rel="preload" as="image" href='png_seq/plexi_00006.png'>
+<link rel="preload" as="image" href='png_seq/plexi_00007.png'>
+<link rel="preload" as="image" href='png_seq/plexi_00008.png'>
+<link rel="preload" as="image" href='png_seq/plexi_00009.png'>
+<link rel="preload" as="image" href='png_seq/plexi_00010.png'>
+
+<style>
+  .container {
+    width: 100%;
+    height: 1500px;
+  }
+  .dynamicimage {
+    width: 100%;
+    height: 50%;
+    padding-top: 0;
+    position: sticky;
+    top: 0;
+    background-size: contain;
+    background-image: url('png_seq/plexi_00000.png');
+    background-repeat: no-repeat;
+  }
+</style>
+
+<div class='container'>
+  <div class='dynamicimage'></div>
+</div>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script>
+const dyImg = {
+    1:'png_seq/plexi_00000.png',
+    2:'png_seq/plexi_00001.png',
+    3:'png_seq/plexi_00002.png',
+    4:'png_seq/plexi_00003.png',
+    5:'png_seq/plexi_00004.png',
+    6:'png_seq/plexi_00005.png',
+    7:'png_seq/plexi_00006.png',
+    8:'png_seq/plexi_00007.png',
+    9:'png_seq/plexi_00008.png',
+    10:'png_seq/plexi_00009.png',
+}
+
+function imageScroll() {
+  const y = window.scrollY;
+  //alert(y);
+  const label = Math.min(Math.floor(y/4) + 1, 95);
+  const updateImage = dyImg[label];
+  $('.dynamicimage').css('background-image', `url('${updateImage}')`);
+}
+
+$(document).ready(()=>{
+  $(window).scroll(()=>{
+    imageScroll();
+  })
+})
+</script>
